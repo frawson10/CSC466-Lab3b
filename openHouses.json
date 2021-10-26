@@ -1,0 +1,79 @@
+{
+	"dataset": "openHouses.csv",
+	"node": {
+		"var": "Location",
+		"edges": [{
+				"edge": {
+					"value": "North",
+					"leaf": {
+						"decision": "No",
+						"p": 1.0
+					}
+				}
+			},
+			{
+				"edge": {
+					"value": "South",
+					"node": {
+						"var": "Bedrooms",
+						"edges": [{
+								"edge": {
+									"value": 3,
+									"node": {
+										"var": "Basement",
+										"edges": [{
+												"edge": {
+													"value": "Yes",
+													"node": {
+														"var": "Floorplan",
+														"edges": [{
+																"edge": {
+																	"value": "traditional",
+																	"leaf": {
+																		"decision": "Yes",
+																		"p": 1.0
+																	}
+																}
+															},
+															{
+																"edge": {
+																	"value": "open",
+																	"leaf": {
+																		"decision": "No",
+																		"p": 1.0
+																	}
+																}
+															}
+														]
+													}
+												}
+											},
+											{
+												"edge": {
+													"value": "No",
+													"leaf": {
+														"decision": "No",
+														"p": 1.0
+													}
+												}
+											}
+										]
+									}
+								}
+							},
+							{
+								"edge": {
+									"value": 4,
+									"leaf": {
+										"decision": "Yes",
+										"p": 1.0
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}

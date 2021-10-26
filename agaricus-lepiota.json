@@ -1,0 +1,71 @@
+{
+    "node": {
+        "var": "odor",
+        "edges": [
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "p"
+                },
+                "value": "p"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "e"
+                },
+                "value": "a"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "p"
+                },
+                "value": "c"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "p"
+                },
+                "value": "s"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "p"
+                },
+                "value": "f"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "p"
+                },
+                "value": "y"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "e"
+                },
+                "value": "l"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "p"
+                },
+                "value": "m"
+            }},
+            {"edge": {
+                "leaf": {
+                    "p": 0.9659863945578231,
+                    "decision": "e"
+                },
+                "value": "n"
+            }}
+        ]
+    },
+    "dataset": "agaricus-lepiota.csv"
+}
