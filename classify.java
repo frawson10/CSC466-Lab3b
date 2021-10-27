@@ -66,11 +66,14 @@ public class classify {
         ArrayList<String> attributeKey = D.get(0);
         ArrayList<String> domains = D.get(1);
         String classVar = D.get(2).get(0);
-        D.remove(0);
-        D.remove(0);
-        D.remove(0);
-        for(ArrayList<String> point : D){
+        // D.remove(0);
+        // D.remove(0);
+        // D.remove(0);
+        /* for(ArrayList<String> point : D){
             classifications.add(classifyDataPoint(point, attributeKey, domains, tree));
+        } */
+        for(int i=3; i<D.size(); i++){
+            classifications.add(classifyDataPoint(D.get(i), attributeKey, domains, tree));
         }
         if(classVar.equals("")){
             System.out.println(classifications.toString());
@@ -84,8 +87,8 @@ public class classify {
             }
         }
         int numCorrect = 0;
-        for(int i=0; i<D.size(); i++){
-            if(D.get(i).get(classVarLoc).equals(classifications.get(i))){
+        for(int i=3; i<D.size(); i++){
+            if(D.get(i).get(classVarLoc).equals(classifications.get(i-3))){
                 numCorrect += 1;
             }
         }

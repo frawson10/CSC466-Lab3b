@@ -87,11 +87,11 @@ public class randomForest {
                         train.add(set.getValue().get(i));
                     }
                 }
-                System.out.println(train);
+                // System.out.println(train);
                 ArrayList<String> restrictions = buildRestrictions(numAttributes, classVarLoc, A);
                 forest.add(InduceC45.run(train, targFile, restrictions));
             }
-            System.out.println(forest.size());
+            // System.out.println(forest.size());
             // JSONObject c45 = InduceC45.run(set.getValue(), training, restrictions);
             // System.out.println("C45 done");
             // System.out.println(c45.toString(4));
