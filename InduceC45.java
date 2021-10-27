@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,9 @@ import org.json.JSONObject;
 
 class InduceC45{
     public static void main(String[] args){
-        ArrayList<ArrayList<String>> D = getData("nursery.csv");
+        ArrayList<ArrayList<String>> D = getData("numeric/letter-recognition.data.csv");
         ArrayList<ArrayList<String>> A = new ArrayList<>();
-        ArrayList<String> restrictions = readRestrictions("nurseryRestrictions.txt");
+        ArrayList<String> restrictions = readRestrictions("numeric/letter-recognition-restrictions.txt");
         A.add(D.get(0));
         A.add(D.get(1));
         A.add(restrictions);
@@ -21,14 +22,15 @@ class InduceC45{
         D.remove(0);
         D.remove(0);
         D.remove(0);
-        double threshold = 0.05;
+        double threshold = 0.37;
         Node tree = c45(D, A, threshold, classVar);
-        printJSON(tree, "nursery.csv");
+        printJSON(tree, "numeric/letter-recognition.data.csv");
+
     }
 
-    public static JSONObject run(List<ArrayList<String>> D, String training, String restrictionsFile){
+    public static JSONObject run(List<ArrayList<String>> D, String training, ArrayList<String> restrictions){
         ArrayList<ArrayList<String>> A = new ArrayList<>();
-        ArrayList<String> restrictions = readRestrictions(restrictionsFile);
+        // ArrayList<String> restrictions = readRestrictions(restrictionsFile);
         A.add(D.get(0));
         A.add(D.get(1));
         A.add(restrictions);
@@ -63,69 +65,93 @@ class InduceC45{
         if(purityFlag){
             return new Node("", tempClassVar, null, 1);
         }
-        // if no more atributes other than class var, choose most frequent label
-        else if(A.get(0).size() <= 1){
+        // if no more categorical attributes other than class var, choose most frequent label
+        int numCatVarLeft = 0;
+        for(int i=0; i<A.get(2).size(); i++){
+            if(A.get(2).get(i).equals("0") && !A.get(1).get(i).equals("0")){
+                numCatVarLeft += 1;
+            }
+        }
+        if(numCatVarLeft != 0){
             Pair winner = popularityContest(D, A, classVarLoc);
             return new Node("", winner.att, null, winner.popularity/Double.valueOf(D.size()));
         }
         // try split
         else{
-            Integer splittingAtt = selectSplittingAttribute(D, A, threshold, classVarLoc);
+            SplittingAttPair splittingAtt = selectSplittingAttribute(D, A, threshold, classVarLoc);
             if(splittingAtt == null){
                 Pair winner = popularityContest(D, A, classVarLoc);
                 return new Node("", winner.att, null, winner.popularity/Double.valueOf(D.size()));
             } else {
                 //stuff after split
-                Node tree = new Node(A.get(0).get(splittingAtt), "", new ArrayList<>(), -1);
+                Node tree = new Node(A.get(0).get(splittingAtt.attIdx), "", new ArrayList<>(), -1);
                 HashMap<String, ArrayList<ArrayList<String>>> splits = new HashMap<>();
-                for(ArrayList<String> point : D){
-                    if(splits.get(point.get(splittingAtt)) == null){
-                        ArrayList<ArrayList<String>> temp = new ArrayList<>();
-                        splits.put(point.get(splittingAtt), temp);
+                if(Integer.valueOf(A.get(1).get(splittingAtt.attIdx)) != 0){ //categorical
+                    for(ArrayList<String> point : D){
+                        if(splits.get(point.get(splittingAtt.attIdx)) == null){
+                            ArrayList<ArrayList<String>> temp = new ArrayList<>();
+                            splits.put(point.get(splittingAtt.attIdx), temp);
+                        }
+                        ArrayList<ArrayList<String>> temp = splits.get(point.get(splittingAtt.attIdx));
+                        temp.add(point);
+                        splits.put(point.get(splittingAtt.attIdx), temp);
                     }
-                    ArrayList<ArrayList<String>> temp = splits.get(point.get(splittingAtt));
-                    temp.add(point);
-                    splits.put(point.get(splittingAtt), temp);
-                }
-                for(Map.Entry<String, ArrayList<ArrayList<String>>> set : splits.entrySet()){
-                    ArrayList<ArrayList<String>> newA = new ArrayList<>();
-                    for(ArrayList<String> a : A){
-                        newA.add(a);
+                    for(Map.Entry<String, ArrayList<ArrayList<String>>> set : splits.entrySet()){
+                        ArrayList<ArrayList<String>> newA = new ArrayList<>();
+                        for(ArrayList<String> a : A){
+                            newA.add(a);
+                        }
+                        newA.get(2).set(splittingAtt.attIdx, "0");
+                        Node subTree = c45(set.getValue(), newA, threshold, classVar);
+                        tree.addEdge(set.getKey(), subTree, "");
                     }
-                    newA.get(2).set(splittingAtt, "0");
-                    Node subTree = c45(set.getValue(), newA, threshold, classVar);
-                    tree.addEdge(set.getKey(), subTree);
-                }
-                if(tree.edges.size() < Integer.valueOf(A.get(1).get(splittingAtt))){
-                    // System.out.println(A.get(0).get(splittingAtt));
-
-                    ArrayList<String> missingLabels = new ArrayList<>();
-                    /* while((Integer.valueOf(A.get(1).get(splittingAtt))-tree.edges.size()) != 0){
-                        
-                    } */
-                    for(int i=0; i<D.size(); i++){
-                        if(splits.get(D.get(i).get(splittingAtt)) != null){
-                            // System.out.println(D.get(i).get(splittingAtt));
-                            Pair winner = popularityContest(D, A, classVarLoc);
-                            Node n = new Node("", winner.att, null, winner.popularity/Double.valueOf(D.size()));
-                            tree.addEdge("ghost", n);
+                    if(tree.edges.size() < Integer.valueOf(A.get(1).get(splittingAtt.attIdx))){
+                        for(int i=0; i<D.size(); i++){
+                            if(splits.get(D.get(i).get(splittingAtt.attIdx)) != null){
+                                Pair winner = popularityContest(D, A, classVarLoc);
+                                Node n = new Node("", winner.att, null, winner.popularity/Double.valueOf(D.size()));
+                                tree.addEdge("ghost", n, "");
+                            }
                         }
                     }
+                } else { //numeric
+                    List<ArrayList<String>> lessOrEqual = new ArrayList<>();
+                    List<ArrayList<String>> greater = new ArrayList<>();
+                    for(ArrayList<String> item : D){
+                        if(Double.valueOf(item.get(splittingAtt.attIdx)) <= splittingAtt.numericAttSplit){
+                            lessOrEqual.add(item);
+                        }else{
+                            greater.add(item);
+                        }
+                    }
+                    Node lessOrEqualSubtree = c45(lessOrEqual, A, threshold, classVar);
+                    Node greaterSubtree = c45(greater, A, threshold, classVar);
+                    tree.addEdge(Double.toString(splittingAtt.numericAttSplit), lessOrEqualSubtree, "le");
+                    tree.addEdge(Double.toString(splittingAtt.numericAttSplit), greaterSubtree, "gt");
+
                 }
                 return tree;
             }
         }
     }
 
-    public static Integer selectSplittingAttribute(List<ArrayList<String>> D, 
+    public static SplittingAttPair selectSplittingAttribute(List<ArrayList<String>> D, 
     ArrayList<ArrayList<String>> A, double threshold, Integer classVarLoc){
-        double p0 = baseEntropy(D, A, threshold, classVarLoc);
+        double p0 = baseEntropy(D, A, classVarLoc);
         HashMap<Integer, Double> gains = new HashMap<>();
+        HashMap<Integer, Double> splitGains = new HashMap<>();
         for(int i = 0; i < A.get(0).size(); i++){
             if(i == classVarLoc || A.get(2).get(i).equals("0")){
                 continue;
             }
-            gains.put(i, p0 - attEntropy(D, A, threshold, classVarLoc, i));
+            if(!A.get(1).get(i).equals("0")){ //categorical
+                gains.put(i, p0 - attEntropy(D, A, classVarLoc, i));
+            } else{ //numeric
+                DoublePair bestBinarySplit = findBestSplit(A, D, p0, i, classVarLoc);
+                gains.put(i, bestBinarySplit.gain);
+                splitGains.put(i, bestBinarySplit.split);
+            }
+            //gains.put(i, p0 - attEntropy(D, A, threshold, classVarLoc, i));
         }
         double maxGain = -1;
         int winningIdx = -1;
@@ -139,14 +165,47 @@ class InduceC45{
             return null;
         }
         else if(gains.get(winningIdx) > threshold){
-            return winningIdx;
+            if(splitGains.get(winningIdx) == null){
+                return new SplittingAttPair(winningIdx, 0);
+            }else{
+                return new SplittingAttPair(winningIdx, splitGains.get(winningIdx));
+            }
         } else{
             return null;
         }
     }
 
-    public static Integer findBestSplit(){
-        return 0;
+    public static DoublePair findBestSplit(ArrayList<ArrayList<String>> A, 
+    List<ArrayList<String>> D, double p0, int attIdx, int classVarLoc){
+        // System.out.println(attIdx);
+        HashMap<Double, Double> splitGains = new HashMap<>();
+        List<ArrayList<String>> sortedD = new ArrayList<>();
+        for(ArrayList<String> item : D){
+            sortedD.add(item);
+        }
+        sortedD.sort((ArrayList<String> a, ArrayList<String> b) -> {
+            if(Double.valueOf(a.get(attIdx)) > Double.valueOf(b.get(attIdx))){
+                return 1;
+            } else if(Double.valueOf(a.get(attIdx)) < Double.valueOf(b.get(attIdx))){
+                return -1;
+            } else{
+                return 0;
+            }
+        });
+        for(ArrayList<String> item : sortedD){
+            if(splitGains.get(Double.valueOf(item.get(attIdx))) == null){
+                splitGains.put(Double.valueOf(item.get(attIdx)), p0 - numericAttSplitEntropy(A, sortedD, classVarLoc, attIdx, Double.valueOf(item.get(attIdx))));
+            }
+        }
+        double maxGain = -1;
+        Double winningSplit = null;
+        for(Map.Entry<Double, Double> set : splitGains.entrySet()){
+            if(set.getValue() > maxGain){
+                maxGain = set.getValue();
+                winningSplit = set.getKey();
+            }
+        }
+        return new DoublePair(winningSplit, maxGain);
     }
 
     public static Pair popularityContest(List<ArrayList<String>> D, 
@@ -175,7 +234,7 @@ class InduceC45{
     }
 
     public static double baseEntropy(List<ArrayList<String>> D,
-    ArrayList<ArrayList<String>> A, double threshold, Integer classVarLoc){
+    ArrayList<ArrayList<String>> arrayList, Integer classVarLoc){
         HashMap<String, Integer> score = new HashMap<>();
         for(ArrayList<String> point : D){
             if(score.get(point.get(classVarLoc)) == null){
@@ -193,7 +252,7 @@ class InduceC45{
     }
 
     public static double attEntropy(List<ArrayList<String>> D,
-    ArrayList<ArrayList<String>> A, double threshold, Integer classVarLoc, int attIdx){
+    ArrayList<ArrayList<String>> A, Integer classVarLoc, int attIdx){
         HashMap<String, ArrayList<ArrayList<String>>> splits = new HashMap<>();
         for(ArrayList<String> point : D){
             if(splits.get(point.get(attIdx)) == null){
@@ -207,8 +266,26 @@ class InduceC45{
         double entropy = 0.0;
         for(Map.Entry<String, ArrayList<ArrayList<String>>> set : splits.entrySet()){
             double probability = Double.valueOf(set.getValue().size()) / Double.valueOf(D.size());
-            entropy += (probability * baseEntropy(set.getValue(), A, threshold, classVarLoc));
+            entropy += (probability * baseEntropy(set.getValue(), A, classVarLoc));
         }
+        return entropy;
+    }
+
+    public static double numericAttSplitEntropy(ArrayList<ArrayList<String>> A, 
+    List<ArrayList<String>> sortedD, Integer classVarLoc, int attIdx, double split){
+        List<ArrayList<String>> lessOrEqual = new ArrayList<>();
+        List<ArrayList<String>> greater = new ArrayList<>();
+        for(ArrayList<String> item : sortedD){
+            if(Double.valueOf(item.get(attIdx)) <= split){
+                lessOrEqual.add(item);
+            } else{
+                greater.add(item);
+            }
+        }
+        double probLessOrEqual = Double.valueOf(lessOrEqual.size()) / Double.valueOf(sortedD.size());
+        double probGreater = Double.valueOf(greater.size()) / Double.valueOf(sortedD.size());
+        double entropy = (probLessOrEqual * baseEntropy(lessOrEqual, A, classVarLoc)) + 
+            (probGreater * baseEntropy(greater, A, classVarLoc));
         return entropy;
     }
 
@@ -268,6 +345,7 @@ class InduceC45{
 
     public static void printJSON(Node tree, String dataSetFile){
         JSONObject json = new JSONObject();
+        FileWriter outputFile = null;
         try {
             json.put("dataset", dataSetFile);
             if(tree.edges != null){
@@ -275,9 +353,18 @@ class InduceC45{
             } else{
                 json.put("leaf", tree.toJSON());
             }
-            System.out.println(json.toString(4));
-        } catch (JSONException e) {
+            // System.out.println(json.toString(4));
+            outputFile = new FileWriter("output.json");
+            outputFile.write(json.toString(2));
+        } catch (Exception e) {
             e.printStackTrace();
+        } finally{
+            try{
+                outputFile.flush();
+                outputFile.close();
+            } catch(Exception e){
+                e.printStackTrace();
+            }
         }
     }
 }
@@ -300,8 +387,8 @@ class Node{
         this.p=p;
     }
 
-    public void addEdge(String label, Node subtree){
-        this.edges.add(new Edge(label, subtree));
+    public void addEdge(String label, Node subtree, String direction){
+        this.edges.add(new Edge(label, subtree, direction));
     }
 
     public String toString(){
@@ -341,13 +428,15 @@ class Node{
 class Edge{
     String edge;
     Node next;
-    public Edge(String e, Node n){
+    String direction;
+    public Edge(String e, Node n, String d){
         this.edge = e;
         this.next = n;
+        this.direction = d;
     }
 
     public String toString(){
-        return "\n" + edge + " node: " + next.toString();
+        return "\n" + edge + " direction: " + direction + " node: " + next.toString();
     }
 
     public JSONObject toJSON(){
@@ -355,6 +444,9 @@ class Edge{
         try {
             JSONObject edgeJSON = new JSONObject();
             edgeJSON.put("value", edge);
+            if(!direction.equals("")){
+                edgeJSON.put("direction", direction);
+            }
             if(next.edges != null){
                 edgeJSON.put("node", next.toJSON());
             } else{
@@ -375,5 +467,25 @@ class Pair{
     public Pair(String a, double p){
         this.att=a;
         this.popularity=p;
+    }
+}
+
+class DoublePair{
+    double split;
+    double gain;
+
+    public DoublePair(double s, double g){
+        this.split=s;
+        this.gain=g;
+    }
+}
+
+class SplittingAttPair{
+    int attIdx;
+    double numericAttSplit;
+
+    public SplittingAttPair(int i, double s){
+        this.attIdx=i;
+        this.numericAttSplit = s;
     }
 }

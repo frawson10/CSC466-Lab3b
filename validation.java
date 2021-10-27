@@ -10,15 +10,16 @@ import org.json.JSONObject;
 
 public class validation {
     public static void main(String[] args){
-        String trainingFile = "nursery.csv";
-        int n = 20;
-        String restrictionsFile = "nurseryRestrictions.txt";
+        String trainingFile = "numeric/iris.data.csv";
+        int n = 10;
+        String restrictionsFile = "numeric/irisRestrictions.txt";
         validate(trainingFile, n, restrictionsFile);
     }
 
-    public static void validate(String training, int n, String restrictions){
+    public static void validate(String training, int n, String restrictionsFile){
         HashMap<Integer, List<ArrayList<String>>> folds = new HashMap<>();
         HashMap<Integer, List<ArrayList<String>>> trainingSets = new HashMap<>();
+        ArrayList<String> restrictions = readRestrictions(restrictionsFile);
         List<ArrayList<String>> D = getData(training);
         ArrayList<String> firstLine = D.get(0);
         ArrayList<String> secondLine = D.get(1);
@@ -63,6 +64,7 @@ public class validation {
         for(Map.Entry<Integer, List<ArrayList<String>>> set : folds.entrySet()){
             JSONObject c45 = InduceC45.run(set.getValue(), training, restrictions);
             // System.out.println("C45 done");
+            System.out.println(c45.toString(4));
             ArrayList<String> classifications = classify.run(c45, trainingSets.get(set.getKey()));
             // System.out.println(classifications.toString());
         }
@@ -90,5 +92,24 @@ public class validation {
             e.printStackTrace();
         }
         return data;
+    }
+
+    public static ArrayList<String> readRestrictions(String path){
+        Scanner sc;
+        ArrayList<String> restrictions = new ArrayList<>();
+        try {
+            sc = new Scanner(new File(path));
+            while (sc.hasNextLine()){
+                ArrayList<String> lineVals = new ArrayList<>();
+                String[] line = sc.nextLine().split(",");
+                for(String s : line){
+                    lineVals.add(s);
+                }
+                restrictions = lineVals;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return restrictions;
     }
 }

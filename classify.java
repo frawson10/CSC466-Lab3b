@@ -8,13 +8,18 @@ import org.json.JSONTokener;
 
 public class classify {
     public static void main(String[] args){
-        Node decisionTree = getDecisionTreeFromFile("agaricus-lepiota.json");
-        ArrayList<ArrayList<String>> D = getData("agaricus-lepiota.csv");
+        Node decisionTree = getDecisionTreeFromFile("numeric/iris.json");
+        ArrayList<ArrayList<String>> D = getData("numeric/iris.data.csv");
         classifyAllInputs(D, decisionTree);
     }
 
     public static ArrayList<String> run(JSONObject json, List<ArrayList<String>> holdoutSet){
-        JSONObject treeJson = json.getJSONObject("node");
+        JSONObject treeJson;
+        if(json.isNull("leaf")){
+            treeJson = json.getJSONObject("node");
+        } else{
+            treeJson = json.getJSONObject("leaf");
+        }
         Node decisionTree = buildTree(treeJson);
         classifyAllInputs(holdoutSet, decisionTree);
         return null;
@@ -47,9 +52,9 @@ public class classify {
             for(int i = 0; i<edges.length(); i++){
                 JSONObject edge = edges.getJSONObject(i).getJSONObject("edge");
                 if(edge.isNull("leaf")){
-                    n.addEdge(edge.getString("value"), buildTree(edge.getJSONObject("node")));
+                    n.addEdge(edge.getString("value"), buildTree(edge.getJSONObject("node")), edge.getString("direction"));
                 } else{
-                    n.addEdge(edge.getString("value"), buildTree(edge.getJSONObject("leaf")));
+                    n.addEdge(edge.getString("value"), buildTree(edge.getJSONObject("leaf")), edge.getString("direction"));
                 }
             }
             return n;
@@ -59,12 +64,13 @@ public class classify {
     public static void classifyAllInputs(List<ArrayList<String>> D, Node tree){
         ArrayList<String> classifications = new ArrayList<>();
         ArrayList<String> attributeKey = D.get(0);
+        ArrayList<String> domains = D.get(1);
         String classVar = D.get(2).get(0);
         D.remove(0);
         D.remove(0);
         D.remove(0);
         for(ArrayList<String> point : D){
-            classifications.add(classifyDataPoint(point, attributeKey, tree));
+            classifications.add(classifyDataPoint(point, attributeKey, domains, tree));
         }
         if(classVar.equals("")){
             System.out.println(classifications.toString());
@@ -89,11 +95,9 @@ public class classify {
         System.out.println("Accuracy: " + (Double.valueOf(numCorrect) / Double.valueOf(D.size())));
     }
 
-    public static String classifyDataPoint(ArrayList<String> point, ArrayList<String> attributekey, Node tree){
+    public static String classifyDataPoint(ArrayList<String> point, ArrayList<String> attributekey, ArrayList<String> domains, Node tree){
         Node currNode = tree;
-        // System.out.println(point);
         while(currNode.decision==null){
-            // System.out.println(currNode.toJSON());
             int attIdx = -1;
             for(int i=0; i<attributekey.size(); i++){
                 if(currNode.attribute.equals(attributekey.get(i))){
@@ -102,18 +106,26 @@ public class classify {
                 }
             }
             String pointData = point.get(attIdx);
-            Node ghostTree;
             for(Edge e : currNode.edges){
-                if(e.edge.equals(pointData)){
-                    currNode = e.next;
-                    break;
-                } else if(e.edge.equals("ghost")){
-                    currNode = e.next;
+                if(domains.get(attIdx).equals("0")){ //numerical
+                    double numericalData = Double.valueOf(pointData);
+                    // System.out.println(e.direction);
+                    if(e.direction.equals("le") && numericalData <= Double.valueOf(e.edge)){
+                        currNode = e.next;
+                    } else if(e.direction.equals("gt") && numericalData > Double.valueOf(e.edge)){
+                        currNode = e.next;
+                    }
+                } else{ //categorical
+                    if(e.edge.equals(pointData)){
+                        currNode = e.next;
+                        break;
+                    } else if(e.edge.equals("ghost")){
+                        currNode = e.next;
+                    }
                 }
             }
             
         }
-        // System.out.println(currNode.decision);
         return currNode.decision;
     }
 

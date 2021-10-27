@@ -1,0 +1,109 @@
+{
+    "node": {
+        "var": "petalLength",
+        "edges": [
+            {"edge": {
+                "leaf": {
+                    "p": 1,
+                    "decision": "Iris-setosa"
+                },
+                "value": "1.9",
+                "direction": "le"
+            }},
+            {"edge": {
+                "node": {
+                    "var": "petalWidth",
+                    "edges": [
+                        {"edge": {
+                            "node": {
+                                "var": "petalLength",
+                                "edges": [
+                                    {"edge": {
+                                        "node": {
+                                            "var": "petalWidth",
+                                            "edges": [
+                                                {"edge": {
+                                                    "leaf": {
+                                                        "p": 1,
+                                                        "decision": "Iris-versicolor"
+                                                    },
+                                                    "value": "1.6",
+                                                    "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                    "leaf": {
+                                                        "p": 1,
+                                                        "decision": "Iris-virginica"
+                                                    },
+                                                    "value": "1.6",
+                                                    "direction": "gt"
+                                                }}
+                                            ]
+                                        },
+                                        "value": "4.9",
+                                        "direction": "le"
+                                    }},
+                                    {"edge": {
+                                        "node": {
+                                            "var": "petalWidth",
+                                            "edges": [
+                                                {"edge": {
+                                                    "leaf": {
+                                                        "p": 1,
+                                                        "decision": "Iris-virginica"
+                                                    },
+                                                    "value": "1.5",
+                                                    "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                    "node": {
+                                                        "var": "sepalLength",
+                                                        "edges": [
+                                                            {"edge": {
+                                                                "leaf": {
+                                                                    "p": 1,
+                                                                    "decision": "Iris-versicolor"
+                                                                },
+                                                                "value": "6.7",
+                                                                "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                                "leaf": {
+                                                                    "p": 1,
+                                                                    "decision": "Iris-virginica"
+                                                                },
+                                                                "value": "6.7",
+                                                                "direction": "gt"
+                                                            }}
+                                                        ]
+                                                    },
+                                                    "value": "1.5",
+                                                    "direction": "gt"
+                                                }}
+                                            ]
+                                        },
+                                        "value": "4.9",
+                                        "direction": "gt"
+                                    }}
+                                ]
+                            },
+                            "value": "1.7",
+                            "direction": "le"
+                        }},
+                        {"edge": {
+                            "leaf": {
+                                "p": 0.9782608695652174,
+                                "decision": "Iris-virginica"
+                            },
+                            "value": "1.7",
+                            "direction": "gt"
+                        }}
+                    ]
+                },
+                "value": "1.9",
+                "direction": "gt"
+            }}
+        ]
+    },
+    "dataset": "numeric/iris.data.csv"
+}

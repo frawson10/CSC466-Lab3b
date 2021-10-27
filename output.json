@@ -1,0 +1,1180 @@
+{
+  "node": {
+    "var": "yege",
+    "edges": [
+      {"edge": {
+        "node": {
+          "var": "xege",
+          "edges": [
+            {"edge": {
+              "node": {
+                "var": "ybar",
+                "edges": [
+                  {"edge": {
+                    "node": {
+                      "var": "x2ybar",
+                      "edges": [
+                        {"edge": {
+                          "node": {
+                            "var": "y2bar",
+                            "edges": [
+                              {"edge": {
+                                "leaf": {
+                                  "p": 1,
+                                  "decision": "A"
+                                },
+                                "value": "3.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "node": {
+                                  "var": "xybar",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9957537154989384,
+                                        "decision": "L"
+                                      },
+                                      "value": "9.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9290322580645162,
+                                        "decision": "J"
+                                      },
+                                      "value": "9.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "3.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "3.0",
+                          "direction": "le"
+                        }},
+                        {"edge": {
+                          "node": {
+                            "var": "xegvy",
+                            "edges": [
+                              {"edge": {
+                                "leaf": {
+                                  "p": 0.9732360097323601,
+                                  "decision": "J"
+                                },
+                                "value": "7.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "node": {
+                                  "var": "xege",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9934782608695653,
+                                        "decision": "I"
+                                      },
+                                      "value": "0.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "node": {
+                                        "var": "xy2bar",
+                                        "edges": [
+                                          {"edge": {
+                                            "node": {
+                                              "var": "xybar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 0.9361702127659575,
+                                                    "decision": "D"
+                                                  },
+                                                  "value": "10.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "xege",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "ybox",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "P"
+                                                              },
+                                                              "value": "8.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "node": {
+                                                                "var": "xbox",
+                                                                "edges": [
+                                                                  {"edge": {
+                                                                    "leaf": {
+                                                                      "p": 1,
+                                                                      "decision": "F"
+                                                                    },
+                                                                    "value": "4.0",
+                                                                    "direction": "le"
+                                                                  }},
+                                                                  {"edge": {
+                                                                    "leaf": {
+                                                                      "p": 1,
+                                                                      "decision": "J"
+                                                                    },
+                                                                    "value": "4.0",
+                                                                    "direction": "gt"
+                                                                  }}
+                                                                ]
+                                                              },
+                                                              "value": "8.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "1.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xbox",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "B"
+                                                              },
+                                                              "value": "2.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "F"
+                                                              },
+                                                              "value": "2.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "1.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "10.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "7.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "node": {
+                                              "var": "xbar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "high",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xege",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "C"
+                                                              },
+                                                              "value": "1.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "K"
+                                                              },
+                                                              "value": "1.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "1.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 0.9393939393939394,
+                                                          "decision": "C"
+                                                        },
+                                                        "value": "1.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "5.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "yege",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "y2bar",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "H"
+                                                              },
+                                                              "value": "2.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "node": {
+                                                                "var": "xbox",
+                                                                "edges": [
+                                                                  {"edge": {
+                                                                    "leaf": {
+                                                                      "p": 1,
+                                                                      "decision": "U"
+                                                                    },
+                                                                    "value": "1.0",
+                                                                    "direction": "le"
+                                                                  }},
+                                                                  {"edge": {
+                                                                    "leaf": {
+                                                                      "p": 1,
+                                                                      "decision": "J"
+                                                                    },
+                                                                    "value": "1.0",
+                                                                    "direction": "gt"
+                                                                  }}
+                                                                ]
+                                                              },
+                                                              "value": "2.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "1.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xybar",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 0.8833333333333333,
+                                                                "decision": "O"
+                                                              },
+                                                              "value": "9.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "node": {
+                                                                "var": "xbox",
+                                                                "edges": [
+                                                                  {"edge": {
+                                                                    "leaf": {
+                                                                      "p": 1,
+                                                                      "decision": "X"
+                                                                    },
+                                                                    "value": "2.0",
+                                                                    "direction": "le"
+                                                                  }},
+                                                                  {"edge": {
+                                                                    "node": {
+                                                                      "var": "high",
+                                                                      "edges": [
+                                                                        {"edge": {
+                                                                          "leaf": {
+                                                                            "p": 1,
+                                                                            "decision": "S"
+                                                                          },
+                                                                          "value": "6.0",
+                                                                          "direction": "le"
+                                                                        }},
+                                                                        {"edge": {
+                                                                          "leaf": {
+                                                                            "p": 1,
+                                                                            "decision": "J"
+                                                                          },
+                                                                          "value": "6.0",
+                                                                          "direction": "gt"
+                                                                        }}
+                                                                      ]
+                                                                    },
+                                                                    "value": "2.0",
+                                                                    "direction": "gt"
+                                                                  }}
+                                                                ]
+                                                              },
+                                                              "value": "9.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "1.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "5.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "7.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "0.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "7.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "3.0",
+                          "direction": "gt"
+                        }}
+                      ]
+                    },
+                    "value": "8.0",
+                    "direction": "le"
+                  }},
+                  {"edge": {
+                    "node": {
+                      "var": "xybar",
+                      "edges": [
+                        {"edge": {
+                          "node": {
+                            "var": "y2bar",
+                            "edges": [
+                              {"edge": {
+                                "node": {
+                                  "var": "xege",
+                                  "edges": [
+                                    {"edge": {
+                                      "node": {
+                                        "var": "xegvy",
+                                        "edges": [
+                                          {"edge": {
+                                            "node": {
+                                              "var": "xbar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "xybar",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "P"
+                                                        },
+                                                        "value": "9.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "F"
+                                                        },
+                                                        "value": "9.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "5.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 1,
+                                                    "decision": "T"
+                                                  },
+                                                  "value": "5.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "9.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "leaf": {
+                                              "p": 0.9776536312849162,
+                                              "decision": "Y"
+                                            },
+                                            "value": "9.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "1.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.8664495114006515,
+                                        "decision": "V"
+                                      },
+                                      "value": "1.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "4.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "node": {
+                                  "var": "yege",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9156626506024096,
+                                        "decision": "T"
+                                      },
+                                      "value": "1.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.968,
+                                        "decision": "Y"
+                                      },
+                                      "value": "1.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "4.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "10.0",
+                          "direction": "le"
+                        }},
+                        {"edge": {
+                          "node": {
+                            "var": "yegvx",
+                            "edges": [
+                              {"edge": {
+                                "node": {
+                                  "var": "x2ybar",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9139072847682119,
+                                        "decision": "T"
+                                      },
+                                      "value": "9.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "node": {
+                                        "var": "x2bar",
+                                        "edges": [
+                                          {"edge": {
+                                            "leaf": {
+                                              "p": 0.7181818181818181,
+                                              "decision": "Y"
+                                            },
+                                            "value": "4.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "leaf": {
+                                              "p": 0.9523809523809523,
+                                              "decision": "F"
+                                            },
+                                            "value": "4.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "9.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "5.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "leaf": {
+                                  "p": 0.6526946107784432,
+                                  "decision": "F"
+                                },
+                                "value": "5.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "10.0",
+                          "direction": "gt"
+                        }}
+                      ]
+                    },
+                    "value": "8.0",
+                    "direction": "gt"
+                  }}
+                ]
+              },
+              "value": "2.0",
+              "direction": "le"
+            }},
+            {"edge": {
+              "node": {
+                "var": "xege",
+                "edges": [
+                  {"edge": {
+                    "node": {
+                      "var": "xegvy",
+                      "edges": [
+                        {"edge": {
+                          "node": {
+                            "var": "xy2bar",
+                            "edges": [
+                              {"edge": {
+                                "node": {
+                                  "var": "xege",
+                                  "edges": [
+                                    {"edge": {
+                                      "node": {
+                                        "var": "xegvy",
+                                        "edges": [
+                                          {"edge": {
+                                            "node": {
+                                              "var": "y2bar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 0.975609756097561,
+                                                    "decision": "A"
+                                                  },
+                                                  "value": "2.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "xbar",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xbox",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "H"
+                                                              },
+                                                              "value": "2.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "L"
+                                                              },
+                                                              "value": "2.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "7.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "width",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "D"
+                                                              },
+                                                              "value": "4.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "R"
+                                                              },
+                                                              "value": "4.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "7.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "2.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "7.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "leaf": {
+                                              "p": 0.8657407407407407,
+                                              "decision": "H"
+                                            },
+                                            "value": "7.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "3.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "node": {
+                                        "var": "onpix",
+                                        "edges": [
+                                          {"edge": {
+                                            "leaf": {
+                                              "p": 1,
+                                              "decision": "N"
+                                            },
+                                            "value": "2.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "node": {
+                                              "var": "x2ybar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "xbar",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "L"
+                                                        },
+                                                        "value": "6.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xbox",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "A"
+                                                              },
+                                                              "value": "3.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "D"
+                                                              },
+                                                              "value": "3.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "6.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "2.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 1,
+                                                    "decision": "U"
+                                                  },
+                                                  "value": "2.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "2.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "3.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "8.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "node": {
+                                  "var": "xbar",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.95,
+                                        "decision": "K"
+                                      },
+                                      "value": "6.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "node": {
+                                        "var": "y2bar",
+                                        "edges": [
+                                          {"edge": {
+                                            "leaf": {
+                                              "p": 1,
+                                              "decision": "A"
+                                            },
+                                            "value": "2.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "node": {
+                                              "var": "y2bar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "x2bar",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "U"
+                                                        },
+                                                        "value": "4.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "O"
+                                                        },
+                                                        "value": "4.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "4.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "high",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xbox",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "K"
+                                                              },
+                                                              "value": "5.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "D"
+                                                              },
+                                                              "value": "5.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "6.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "J"
+                                                        },
+                                                        "value": "6.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "4.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "2.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "6.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "8.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "8.0",
+                          "direction": "le"
+                        }},
+                        {"edge": {
+                          "node": {
+                            "var": "x2bar",
+                            "edges": [
+                              {"edge": {
+                                "node": {
+                                  "var": "y2bar",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9512195121951219,
+                                        "decision": "V"
+                                      },
+                                      "value": "4.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "node": {
+                                        "var": "ybar",
+                                        "edges": [
+                                          {"edge": {
+                                            "node": {
+                                              "var": "x2bar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "xbox",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xbar",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "H"
+                                                              },
+                                                              "value": "7.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "N"
+                                                              },
+                                                              "value": "7.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "3.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "F"
+                                                        },
+                                                        "value": "3.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "3.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "ybox",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "U"
+                                                        },
+                                                        "value": "8.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "V"
+                                                        },
+                                                        "value": "8.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "3.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "9.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "node": {
+                                              "var": "xegvy",
+                                              "edges": [
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "x2bar",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "Y"
+                                                        },
+                                                        "value": "2.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "V"
+                                                        },
+                                                        "value": "2.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "10.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 1,
+                                                    "decision": "T"
+                                                  },
+                                                  "value": "10.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "9.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "4.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "4.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "leaf": {
+                                  "p": 0.8975694444444444,
+                                  "decision": "U"
+                                },
+                                "value": "4.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "8.0",
+                          "direction": "gt"
+                        }}
+                      ]
+                    },
+                    "value": "4.0",
+                    "direction": "le"
+                  }},
+                  {"edge": {
+                    "node": {
+                      "var": "xegvy",
+                      "edges": [
+                        {"edge": {
+                          "leaf": {
+                            "p": 0.9834862385321101,
+                            "decision": "M"
+                          },
+                          "value": "6.0",
+                          "direction": "le"
+                        }},
+                        {"edge": {
+                          "node": {
+                            "var": "x2ybar",
+                            "edges": [
+                              {"edge": {
+                                "leaf": {
+                                  "p": 0.8324697754749568,
+                                  "decision": "N"
+                                },
+                                "value": "7.0",
+                                "direction": "le"
+                              }},
+                              {"edge": {
+                                "node": {
+                                  "var": "y2bar",
+                                  "edges": [
+                                    {"edge": {
+                                      "leaf": {
+                                        "p": 0.9558573853989814,
+                                        "decision": "W"
+                                      },
+                                      "value": "3.0",
+                                      "direction": "le"
+                                    }},
+                                    {"edge": {
+                                      "node": {
+                                        "var": "xybar",
+                                        "edges": [
+                                          {"edge": {
+                                            "node": {
+                                              "var": "y2bar",
+                                              "edges": [
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 1,
+                                                    "decision": "W"
+                                                  },
+                                                  "value": "4.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 1,
+                                                    "decision": "U"
+                                                  },
+                                                  "value": "4.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "7.0",
+                                            "direction": "le"
+                                          }},
+                                          {"edge": {
+                                            "node": {
+                                              "var": "xegvy",
+                                              "edges": [
+                                                {"edge": {
+                                                  "leaf": {
+                                                    "p": 0.9142857142857143,
+                                                    "decision": "N"
+                                                  },
+                                                  "value": "9.0",
+                                                  "direction": "le"
+                                                }},
+                                                {"edge": {
+                                                  "node": {
+                                                    "var": "xege",
+                                                    "edges": [
+                                                      {"edge": {
+                                                        "node": {
+                                                          "var": "xbox",
+                                                          "edges": [
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "T"
+                                                              },
+                                                              "value": "4.0",
+                                                              "direction": "le"
+                                                            }},
+                                                            {"edge": {
+                                                              "leaf": {
+                                                                "p": 1,
+                                                                "decision": "V"
+                                                              },
+                                                              "value": "4.0",
+                                                              "direction": "gt"
+                                                            }}
+                                                          ]
+                                                        },
+                                                        "value": "6.0",
+                                                        "direction": "le"
+                                                      }},
+                                                      {"edge": {
+                                                        "leaf": {
+                                                          "p": 1,
+                                                          "decision": "W"
+                                                        },
+                                                        "value": "6.0",
+                                                        "direction": "gt"
+                                                      }}
+                                                    ]
+                                                  },
+                                                  "value": "9.0",
+                                                  "direction": "gt"
+                                                }}
+                                              ]
+                                            },
+                                            "value": "7.0",
+                                            "direction": "gt"
+                                          }}
+                                        ]
+                                      },
+                                      "value": "3.0",
+                                      "direction": "gt"
+                                    }}
+                                  ]
+                                },
+                                "value": "7.0",
+                                "direction": "gt"
+                              }}
+                            ]
+                          },
+                          "value": "6.0",
+                          "direction": "gt"
+                        }}
+                      ]
+                    },
+                    "value": "4.0",
+                    "direction": "gt"
+                  }}
+                ]
+              },
+              "value": "2.0",
+              "direction": "gt"
+            }}
+          ]
+        },
+        "value": "2.0",
+        "direction": "le"
+      }},
+      {"edge": {
+        "leaf": {
+          "p": 0.059940059940059943,
+          "decision": "X"
+        },
+        "value": "2.0",
+        "direction": "gt"
+      }}
+    ]
+  },
+  "dataset": "numeric/letter-recognition.data.csv"
+}
